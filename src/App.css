@@ -1,0 +1,25 @@
+#root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('./assets/bg1.jpeg');
+  background-size: cover;
+  background-position: center center;
+}
+
+#app {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(100px, 200px));
+  place-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
