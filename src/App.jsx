@@ -4,6 +4,7 @@ import dataFetcher from './utils/dataFetcher';
 import shuffleData from './utils/shuffleData';
 import Card from './components/Card';
 import BoxScore from './components/BoxScore';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   const [heroesData, setHeroesData] = useState([]);
@@ -11,12 +12,17 @@ function App() {
   const [flip, setFlip] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     async function getData() {
       try {
         const data = await dataFetcher();
         setHeroesData(data);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 300);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -43,6 +49,7 @@ function App() {
 
     if (clicked.includes(hero.name)) {
       console.log('gameOver');
+      setGameOver(true);
       setClicked([]);
       setScore(0);
     }
@@ -50,6 +57,7 @@ function App() {
 
   return (
     <>
+      {isLoading && <LoadingScreen />}
       <BoxScore score={score} bestScore={bestScore} />
       <div id="app">
         {heroesData.map((hero) => (
