@@ -40,3 +40,6 @@
   transform: rotateY(180deg);
   transition: 1s;
 }
+.card.flip[disabled] {
+  pointer-events: none;
+}
