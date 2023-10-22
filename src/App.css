@@ -13,13 +13,7 @@
 #app {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(5, minmax(100px, 200px));
+  grid-template-columns: repeat(4, minmax(85px, 150px));
   place-items: center;
   gap: 10px;
-}
-
-@media (max-width: 768px) {
-  ul {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }

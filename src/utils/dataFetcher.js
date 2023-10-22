@@ -1,54 +1,46 @@
 const token = '10220203370170847';
 const baseUrl = `https://superheroapi.com/api.php/${token}/search/`;
 
-async function dataFetcher() {
+const dataFetcher = async () => {
   const heroes = [
-    'ghost rider',
-    'blade',
+    'thor',
     'iron Man',
     'spider-Man',
     'loki',
-    'thanos',
+    'venom',
     'captain america',
-    'black Widow',
     'hulk',
     'black panther',
     'deadpool',
-    'wonder woman',
     'aquaman',
     'superman',
     'batman',
-    // 'thor',
-    // 'venom',
-    // 'Darkseid',
-    // 'deathstroke',
-    // 'harley quinn',
   ];
-  const dataList = [];
+  const heroesList = [];
   await Promise.all(
     heroes.map(async (hero) => {
       const url = `${baseUrl}${hero.trim()}`;
       const results = await fetch(url);
       const data = await results.json();
-      let modData;
+      let modifiedData;
       if (
         hero === 'thor' ||
         hero === 'batman' ||
         hero === 'superman' ||
         hero === 'venom'
       ) {
-        modData = data.results[1];
+        modifiedData = data.results[1];
       } else {
-        modData = data.results[0];
+        modifiedData = data.results[0];
       }
-      dataList.push({
-        id: modData.id,
-        name: modData.name,
-        img: modData.image.url,
+      heroesList.push({
+        id: modifiedData.id,
+        name: modifiedData.name,
+        img: modifiedData.image.url,
       });
     }),
   );
-  return dataList;
-}
+  return heroesList;
+};
 
 export default dataFetcher;

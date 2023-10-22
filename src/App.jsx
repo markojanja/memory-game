@@ -16,17 +16,17 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    async function getData() {
+    const getData = async () => {
       try {
         const data = await dataFetcher();
         setHeroesData(data);
         setTimeout(() => {
           setIsLoading(false);
-        }, 300);
+        }, 1000);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    }
+    };
     getData();
   }, []);
 
@@ -34,9 +34,6 @@ function App() {
     setFlip(true);
     setClicked([...clicked, hero.name]);
     setScore(score + 1);
-    if (score >= bestScore && !clicked.includes(hero.name)) {
-      setBestScore(bestScore + 1);
-    }
 
     setTimeout(() => {
       const shuffledData = shuffleData([...heroesData]);
@@ -45,13 +42,16 @@ function App() {
 
     setTimeout(() => {
       setFlip(false);
-    }, 1500);
+    }, 1000);
 
     if (clicked.includes(hero.name)) {
       console.log('gameOver');
       setGameOver(true);
       setClicked([]);
       setScore(0);
+    }
+    if (score >= bestScore && !clicked.includes(hero.name)) {
+      setBestScore(bestScore + 1);
     }
   }
 
