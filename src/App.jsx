@@ -5,6 +5,7 @@ import shuffleData from './utils/shuffleData';
 import Card from './components/Card';
 import BoxScore from './components/BoxScore';
 import LoadingScreen from './components/LoadingScreen';
+import Modal from './components/Modal';
 
 function App() {
   const [heroesData, setHeroesData] = useState([]);
@@ -45,7 +46,6 @@ function App() {
     }, 1000);
 
     if (clicked.includes(hero.name)) {
-      console.log('gameOver');
       setGameOver(true);
       setClicked([]);
       setScore(0);
@@ -58,6 +58,7 @@ function App() {
   return (
     <>
       {isLoading && <LoadingScreen />}
+      {gameOver && <Modal setGameOver={setGameOver} />}
       <BoxScore score={score} bestScore={bestScore} />
       <div id="app">
         {heroesData.map((hero) => (
