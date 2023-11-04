@@ -32,7 +32,6 @@ function App() {
   }, []);
 
   function handleClick(hero) {
-    setFlip(true);
     setClicked([...clicked, hero.name]);
     setScore(score + 1);
 
@@ -41,24 +40,30 @@ function App() {
       setHeroesData(shuffledData);
     }, 800);
 
-    setTimeout(() => {
-      setFlip(false);
-    }, 1000);
-
     if (clicked.includes(hero.name)) {
       setGameOver(true);
+      setFlip(true);
       setClicked([]);
       setScore(0);
     }
     if (score >= bestScore && !clicked.includes(hero.name)) {
       setBestScore(bestScore + 1);
     }
+
+    flipAnimation();
   }
+
+  const flipAnimation = () => {
+    setFlip(true);
+    setTimeout(() => {
+      setFlip(false);
+    }, 1000);
+  };
 
   return (
     <>
       {isLoading && <LoadingScreen />}
-      {gameOver && <Modal setGameOver={setGameOver} />}
+      {gameOver && <Modal setGameOver={setGameOver} setFlip={setFlip} />}
       <BoxScore score={score} bestScore={bestScore} />
       <div id="app">
         {heroesData.map((hero) => (
@@ -68,6 +73,7 @@ function App() {
             image={hero.img}
             onClick={() => handleClick(hero)}
             flip={flip}
+            gameOver={gameOver}
           />
         ))}
       </div>

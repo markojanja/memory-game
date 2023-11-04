@@ -1,11 +1,11 @@
 import './Card.css';
 import cardImg from '../assets/card.jpg';
 
-const Card = ({ name, image, onClick, flip }) => {
+const Card = ({ name, image, onClick, flip, gameOver }) => {
   return (
     <div
       role="button"
-      className={`card ${flip ? 'flip' : ''}`}
+      className={`card ${flip ? 'flip' : ''} ${gameOver ? 'flip' : ''}`}
       onClick={onClick}
       disabled={flip}
     >

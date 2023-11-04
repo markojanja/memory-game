@@ -1,9 +1,10 @@
 import './Modal.css';
 import Button from './UI/Button';
 
-const Modal = ({ setGameOver }) => {
+const Modal = ({ setGameOver, setFlip }) => {
   const handleGameOver = () => {
     setGameOver(false);
+    setFlip(false);
   };
 
   return (

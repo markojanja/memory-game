@@ -5,7 +5,7 @@ const BoxScore = ({ score, bestScore }) => {
     <div className="box-score">
       <div className="box-score-content">
         <p>
-          score: {score} / best score : {bestScore}
+          Score: {score} / Best score : {bestScore}
         </p>
       </div>
     </div>

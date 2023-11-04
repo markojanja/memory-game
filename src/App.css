@@ -13,7 +13,9 @@
 #app {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(85px, 150px));
-  place-items: center;
+  grid-template-columns: repeat(4, minmax(50px, 150px));
+  width: 100%;
+  place-content: center;
   gap: 10px;
+  padding: 15px;
 }

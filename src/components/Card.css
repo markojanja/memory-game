@@ -43,3 +43,19 @@
 .card.flip[disabled] {
   pointer-events: none;
 }
+
+@media (max-width: 427px) {
+  .card {
+    min-height: 150px;
+  }
+
+  .card .front p {
+    display: none;
+  }
+}
+
+@media (max-width: 326px) {
+  .card {
+    min-height: 100px;
+  }
+}
