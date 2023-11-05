@@ -4,8 +4,8 @@ import spinner from '../assets/spinner.svg';
 const LoadingScreen = () => {
   return (
     <div className="load-scr">
+      <h1>Hero Card Game</h1>
       <img src={spinner} alt="loading" />
-      <h2>Loading</h2>
     </div>
   );
 };

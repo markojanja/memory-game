@@ -2,10 +2,12 @@ import './Card.css';
 import cardImg from '../assets/card.jpg';
 
 const Card = ({ name, image, onClick, flip, gameOver }) => {
+  const activateAnimation = () => (flip ? true : gameOver ? true : false);
+
   return (
     <div
       role="button"
-      className={`card ${flip ? 'flip' : ''} ${gameOver ? 'flip' : ''}`}
+      className={`card ${activateAnimation() ? 'flip' : ''}`}
       onClick={onClick}
       disabled={flip}
     >
